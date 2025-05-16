@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Resort Archives</title>
+<title>Resort</title>
 <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet" />
 <style>
   * {
@@ -23,8 +23,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 26px;
-    cursor: pointer;
     white-space: nowrap;
+    text-align: center;
   }
   #terminal {
     position: absolute;
@@ -35,18 +35,13 @@
     white-space: pre-wrap;
     display: none;
   }
-
   #container {
     position: absolute;
-    top: 75%;  /* moved down */
+    top: 70%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 300px;
+    transform: translate(-50%, -50%);
     text-align: center;
-    user-select: none;
   }
-
   #topLinks {
     font-size: 36px;
     margin-bottom: 25px;
@@ -58,10 +53,8 @@
     cursor: default;
     display: inline-block;
   }
-
   #roster {
     font-size: 24px;
-    line-height: 2.2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,7 +72,6 @@
     background: white;
     color: black;
   }
-
   #profilePopup {
     display: none;
     position: fixed;
@@ -100,7 +92,6 @@
     border-radius: 8px;
     user-select: none;
   }
-
   @media (max-width: 600px) {
     #topLinks {
       font-size: 28px;
@@ -108,7 +99,6 @@
     }
     #roster {
       font-size: 20px;
-      line-height: 2;
     }
     #profilePopup img {
       max-width: 120px;
@@ -118,34 +108,29 @@
 </style>
 </head>
 <body>
-
 <div id="intro">Press any key to continue</div>
 <div id="terminal"></div>
-
 <div id="container" style="display:none;">
   <div id="topLinks">
-    <span>Telegram</span>
-    <span>Doxbin</span>
+    <span>telegram</span>
+    <span>doxbin</span>
   </div>
-
   <div id="roster">
-    <span data-name="Recency">Recency</span>
-    <span data-name="Akane">Akane</span>
-    <span data-name="Sec">Sec</span>
-    <span data-name="Sha">Sha</span>
-    <span data-name="Lurkingg">Lurkingg</span>
-    <span data-name="Khursk">Khursk</span>
-    <span data-name="Terror">Terror</span>
-    <span data-name="Dead">Dead</span>
-    <span data-name="Shy">Shy</span>
-    <span data-name="Holy/Kiryu">Holy/Kiryu</span>
+    <span data-name="Recency">recency</span>
+    <span data-name="Akane">akane</span>
+    <span data-name="Sec">sec</span>
+    <span data-name="Sha">sha</span>
+    <span data-name="Lurkingg">lurkingg</span>
+    <span data-name="Khursk">khursk</span>
+    <span data-name="Terror">terror</span>
+    <span data-name="Dead">dead</span>
+    <span data-name="Shy">shy</span>
+    <span data-name="Holy/Kiryu">holy/kiryu</span>
   </div>
 </div>
-
 <div id="profilePopup">
   <img id="profileImage" alt="Profile Picture" />
 </div>
-
 <script>
   const intro = document.getElementById('intro');
   const terminal = document.getElementById('terminal');
@@ -153,21 +138,19 @@
   const roster = document.getElementById('roster');
   const profilePopup = document.getElementById('profilePopup');
   const profileImage = document.getElementById('profileImage');
-
-  const terminalText = root@resort.sh:~$ user added. Password set. Directory created.\nLogging in...\nLogin successful.\n;
-
+  const terminalText = `root@resort.sh:~$ user added. Password set. Directory created.\nLogging in...\nLogin successful.\n`;
   const profiles = {
     "Recency": "https://files.catbox.moe/mmhghr.jpg",
     "Akane": "https://files.catbox.moe/e9f41g.jpg",
     "Sec": "https://files.catbox.moe/upwb08.jpg",
-    "Sha": "https://files.catbox.moe/5pmmwf.jpg","Lurkingg": "https://files.catbox.moe/x7wpej.jpg",
+    "Sha": "https://files.catbox.moe/5pmmwf.jpg",
+    "Lurkingg": "https://files.catbox.moe/x7wpej.jpg",
     "Khursk": "https://files.catbox.moe/23feoq.jpg",
     "Terror": "https://files.catbox.moe/oy48b3.jpg",
     "Dead": "https://files.catbox.moe/67wf9k.jpg",
     "Shy": "https://files.catbox.moe/me2ftk.jpg",
     "Holy/Kiryu": "https://files.catbox.moe/vp110e.jpg"
   };
-
   function typeWriter(text, i = 0, callback) {
     if (i < text.length) {
       terminal.textContent += text.charAt(i);
@@ -176,7 +159,6 @@
       if(callback) callback();
     }
   }
-
   function startSequence() {
     intro.style.display = 'none';
     terminal.style.display = 'block';
@@ -188,18 +170,15 @@
       }, 800);
     });
   }
-
   function startHandler() {
     window.removeEventListener('keydown', startHandler);
     window.removeEventListener('click', startHandler);
     window.removeEventListener('touchstart', startHandler);
     startSequence();
   }
-
   window.addEventListener('keydown', startHandler);
   window.addEventListener('click', startHandler);
   window.addEventListener('touchstart', startHandler);
-
   roster.querySelectorAll('span').forEach(span => {
     span.addEventListener('click', () => {
       roster.querySelectorAll('span').forEach(s => s.classList.remove('active'));
@@ -209,7 +188,6 @@
       profilePopup.style.display = 'block';
     });
   });
-
   window.addEventListener('click', (e) => {
     if (!roster.contains(e.target) && !profilePopup.contains(e.target)) {
       profilePopup.style.display = 'none';
@@ -217,6 +195,5 @@
     }
   });
 </script>
-
 </body>
 </html>
