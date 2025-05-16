@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resort</title>
   <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
   <style>
@@ -10,162 +12,147 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    body, html {
       width: 100%;
       height: 100%;
-      background: black;
-      color: white;
+      background-color: black;
       font-family: 'Minecraftia', sans-serif;
-      overflow: hidden;
-    }
-
-    .glow {
-      text-shadow: none;
-    }
-
-    #intro {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 18px;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    #terminal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      text-align: left;
-      white-space: pre-line;
-      display: none;
-      font-size: 16px;
-    }
-
-    #content {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: none;
-      text-align: center;
-    }
-
-    .links {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .links a {
       color: white;
-      text-decoration: underline;
-      display: block;
-      margin: 5px 0;
+      overflow: hidden;
+      user-select: none;
     }
 
-    .roster {
+    .centered {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+
+    #intro {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    #terminal {
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      text-align: left;
+      max-width: 90vw;
+      margin: 20px auto;
+    }
+
+    #links {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #links a {
+      display: block;
+      font-size: 20px;
+      color: white;
+      margin: 5px 0;
+      text-decoration: underline;
+    }
+
+    #roster {
+      display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
     }
 
     .member {
+      text-align: center;
       cursor: pointer;
-      font-size: 18px;
-      padding: 5px;
     }
 
     .pfp {
       margin-top: 10px;
+      max-width: 150px;
+      max-height: 150px;
       display: none;
-    }
-
-    .pfp img {
-      max-width: 100px;
-      height: auto;
-      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <div id="intro">press any key to continue</div>
-  <div id="terminal"></div>
+  <div class="centered" id="main">
+    <div id="intro">Press any key to continue</div>
+    <div id="terminal" style="display:none;"></div>
 
-  <div id="content">
-    <div class="links">
-      <a href="https://t.me/resortannc" target="_blank">telegram</a>
-      <a href="https://doxbin.com/user/ResortArchives" target="_blank">doxbin</a>
+    <div id="links" style="display:none;">
+      <a href="https://t.me/resortannc" target="_blank">TELEGRAM</a>
+      <a href="https://doxbin.com/user/ResortArchives" target="_blank">DOXBIN</a>
     </div>
-    <div class="roster">
-      <div class="member" onclick="showPfp('recency')">recency</div>
-      <div class="member" onclick="showPfp('akane')">akane</div>
-      <div class="member" onclick="showPfp('sec')">sec</div>
-      <div class="member" onclick="showPfp('sha')">sha</div>
-      <div class="member" onclick="showPfp('lurkingg')">lurkingg</div>
-      <div class="member" onclick="showPfp('khursk')">khursk</div>
-      <div class="member" onclick="showPfp('terror')">terror</div>
-      <div class="member" onclick="showPfp('dead')">dead</div>
-      <div class="member" onclick="showPfp('shy')">shy</div>
-      <div class="member" onclick="showPfp('kiryu')">holy/kiryu</div>
+
+    <div id="roster" style="display:none;">
+      <div class="member" onclick="showPfp('recency')">recency<br><img id="pfp-recency" class="pfp" src="https://files.catbox.moe/mmhghr.jpg"></div>
+      <div class="member" onclick="showPfp('akane')">akane<br><img id="pfp-akane" class="pfp" src="https://files.catbox.moe/e9f41g.jpg"></div>
+      <div class="member" onclick="showPfp('sec')">sec<br><img id="pfp-sec" class="pfp" src="https://files.catbox.moe/upwb08.jpg"></div>
+      <div class="member" onclick="showPfp('sha')">sha<br><img id="pfp-sha" class="pfp" src="https://files.catbox.moe/5pmmwf.jpg"></div>
+      <div class="member" onclick="showPfp('lurkingg')">lurkingg<br><img id="pfp-lurkingg" class="pfp" src="https://files.catbox.moe/xxxxx.jpg"></div>
+      <div class="member" onclick="showPfp('khursk')">khursk<br><img id="pfp-khursk" class="pfp" src="https://files.catbox.moe/23feoq.jpg"></div>
+      <div class="member" onclick="showPfp('terror')">terror<br><img id="pfp-terror" class="pfp" src="https://files.catbox.moe/oy48b3.jpg"></div>
+      <div class="member" onclick="showPfp('dead')">dead<br><img id="pfp-dead" class="pfp" src="https://files.catbox.moe/67wf9k.jpg"></div>
+      <div class="member" onclick="showPfp('shy')">shy<br><img id="pfp-shy" class="pfp" src="https://files.catbox.moe/me2ftk.jpg"></div>
+      <div class="member" onclick="showPfp('holy')">holy/kiryu<br><img id="pfp-holy" class="pfp" src="https://files.catbox.moe/vp110e.jpg"></div>
     </div>
-    <div class="pfp" id="pfp"></div>
   </div>
 
   <script>
+    const intro = document.getElementById('intro');
+    const terminal = document.getElementById('terminal');
+    const links = document.getElementById('links');
+    const roster = document.getElementById('roster');
+
     const terminalLines = [
-      "user added",
-      "password set",
-      "directory created",
-      "logging in...",
-      "login successful"
+      'user added.',
+      'password set.',
+      'directory created.',
+      'logging in...',
     ];
 
-    let terminalIndex = 0;
-
-    function showTerminal() {
-      document.getElementById("intro").style.display = "none";
-      const terminal = document.getElementById("terminal");
-      terminal.style.display = "block";
-      const interval = setInterval(() => {
-        if (terminalIndex < terminalLines.length) {
-          terminal.innerHTML += terminalLines[terminalIndex] + "\n";
-          terminalIndex++;
-        } else {
-          clearInterval(interval);
+    function typeLines(lines, index = 0) {
+      if (index < lines.length) {
+        terminal.innerHTML += lines[index] + '\n';
+        setTimeout(() => typeLines(lines, index + 1), 600);
+      } else {
+        setTimeout(() => {
+          terminal.innerHTML += '\nlogin successful.';
           setTimeout(() => {
-            terminal.style.display = "none";
-            document.getElementById("content").style.display = "block";
-          }, 800);
-        }
-      }, 800);
+            terminal.style.display = 'none';
+            links.style.display = 'block';
+            roster.style.display = 'flex';
+          }, 1000);
+        }, 800);
+      }
+    }
+
+    function startExperience() {
+      intro.style.display = 'none';
+      terminal.style.display = 'block';
+      terminal.innerHTML = '';
+      typeLines(terminalLines);
     }
 
     function showPfp(name) {
-      const pfps = {
-        recency: 'https://files.catbox.moe/mmhghr.jpg',
-        akane: 'https://files.catbox.moe/e9f41g.jpg',
-        sec: 'https://files.catbox.moe/upwb08.jpg',
-        sha: 'https://files.catbox.moe/5pmmwf.jpg',
-        lurkingg: 'https://files.catbox.moe/oy48b3.jpg',
-        khursk: 'https://files.catbox.moe/23feoq.jpg',
-        terror: 'https://files.catbox.moe/oy48b3.jpg',
-        dead: 'https://files.catbox.moe/67wf9k.jpg',
-        shy: 'https://files.catbox.moe/me2ftk.jpg',
-        kiryu: 'https://files.catbox.moe/vp110e.jpg'
-      };
-      const container = document.getElementById("pfp");
-      container.innerHTML = `<img src="${pfps[name]}" alt="${name}">`;
-      container.style.display = 'block';
+      const img = document.getElementById('pfp-' + name);
+      const all = document.querySelectorAll('.pfp');
+      all.forEach(i => i.style.display = 'none');
+      if (img) img.style.display = 'block';
     }
 
-    document.addEventListener("keydown", showTerminal);
-    document.addEventListener("click", showTerminal);
-    document.addEventListener("touchstart", showTerminal);
+    window.addEventListener('keydown', startExperience);
+    window.addEventListener('click', startExperience);
+    window.addEventListener('touchstart', startExperience);
   </script>
 </body>
 </html>
